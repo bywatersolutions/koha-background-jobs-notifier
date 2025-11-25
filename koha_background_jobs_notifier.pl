@@ -172,8 +172,8 @@ $alerted ||= handle_alert(
 # Rate exceeded
 $alerted ||= handle_alert(
     state_key  => "rate",
-    is_active  => $current_state->{last_jobs_rate} > $MAX_NEW_JOBS_RATE,
-    was_active => $previous_state->{last_jobs_rate} > $MAX_NEW_JOBS_RATE,
+    is_active  => $current_state->{rate} > $MAX_NEW_JOBS_RATE,
+    was_active => $previous_state->{rate} > $MAX_NEW_JOBS_RATE,
     message_on =>
         ":warning: [$INSTANCE] *Koha job creation rate alert*: $jobs_rate in last $RATE_WINDOW_MINUTES minutes (threshold $MAX_NEW_JOBS_RATE)",
     message_off => ":white_check_mark: [$INSTANCE] Koha job creation rate recovered to $jobs_rate.",
@@ -182,8 +182,8 @@ $alerted ||= handle_alert(
 # Stuck jobs
 $alerted ||= handle_alert(
     state_key   => "stuck_running",
-    is_active   => $current_state->{last_stuck_count} > 0,
-    was_active  => $previous_state->{last_stuck_count} > 0,
+    is_active   => $current_state->{stuck_running} > 0,
+    was_active  => $previous_state->{stuck_running} > 0,
     message_on  => stuck_jobs_message( $stuck_jobs, $MAX_RUNNING_AGE ),
     message_off => ":white_check_mark: All running jobs are now under $MAX_RUNNING_AGE minutes.",
 );
