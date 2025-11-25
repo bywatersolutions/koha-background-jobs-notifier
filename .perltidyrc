@@ -1,0 +1,7 @@
+-pbp      # Start with Perl Best Practices
+-nst      # Undo -st from -pbp, to allow for command line use
+-w        # Show all warnings
+-l=120    # 120 characters per line
+-i=4      # Indentation is 4 columns
+-ci=4     # Continuation indentation is 4 columns
+-mbl=2    # No more than 2 blank lines
